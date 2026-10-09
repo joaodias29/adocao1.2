@@ -1,0 +1,48 @@
+/* Controle de Fonte Base (Acessibilidade) */
+html.font-normal { font-size: 20px; }
+html.font-large { font-size: 24px; }
+html.font-xl { font-size: 28px; }
+
+/* Escopo Gestão - Fonte normal para interface densa */
+html[data-shell="site"] { font-size: 16px; }
+
+*:focus-visible { outline: 4px solid #C2410C; outline-offset: 4px; border-radius: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important; scroll-behavior: auto !important;
+    }
+}
+
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] summary ~ * { animation: fadeIn 0.2s ease-out; }
+
+.fade-in { animation: fadeIn 0.25s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Animação para a transição do Match */
+.pulse-heart { animation: heartbeat 1.5s infinite ease-in-out; }
+@keyframes heartbeat {
+    0%, 30%, 60%, 100% { transform: scale(1); }
+    15%, 45% { transform: scale(1.3); }
+}
+
+/* =========================================
+   ESTILOS DE MODO (APP PÚBLICO vs SITE GESTÃO)
+   ========================================= */
+
+/* Visibilidade de Shells */
+html[data-shell="app"] #app-shell { display: flex; }
+html[data-shell="app"] #site-shell { display: none; }
+
+html[data-shell="site"] #app-shell { display: none; }
+html[data-shell="site"] #site-shell { display: flex; }
+
+/* Impedir seleção de texto em botões do mobile */
+.no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}

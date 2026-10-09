@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-shell="app" class="font-normal scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Um Clique, Uma Companhia</title>
+    
+    <!-- Tailwind via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            light: '#FFFDF8',
+                            card: '#FFFFFF',
+                            dark: '#1F2937',
+                            primary: '#0E7C7B',
+                            highlight: '#C2410C',
+                            whatsapp: '#0B7A3E',
+                            softTeal: '#E6F4F1',
+                            softOrange: '#FFF1E6'
+                        }
+                    },
+                    fontFamily: { sans: ['Nunito', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-100 font-sans transition-colors duration-200">
+    
+    <!-- SHELL DO APP PÚBLICO (Emula celular no desktop) -->
+    <div id="app-shell" class="hidden mx-auto bg-brand-light min-h-[100dvh] relative shadow-2xl sm:max-w-[480px] flex-col overflow-x-hidden">
+        <div id="layout-header"></div>
+        <main id="app-root" class="flex-grow flex flex-col w-full pb-[calc(85px+var(--safe-bottom,0px))]" aria-live="polite"></main>
+        <div id="bottom-nav"></div>
+    </div>
+
+    <!-- SHELL DA GESTÃO (Layout de Painel Desktop-first) -->
+    <div id="site-shell" class="hidden min-h-[100dvh] bg-gray-50 flex-col md:flex-row w-full">
+        <!-- Sidebar -->
+        <aside id="gestao-sidebar" class="w-full md:w-64 bg-brand-dark text-white flex-col hidden md:flex flex-shrink-0 z-20"></aside>
+        
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col min-w-0 max-w-full">
+            <header id="gestao-header" class="bg-white shadow-sm h-16 flex justify-between items-center px-6 z-10 sticky top-0"></header>
+            <main id="gestao-root" class="p-4 sm:p-8 flex-1 overflow-x-hidden"></main>
+        </div>
+    </div>
+
+    <!-- Modais Globais -->
+    <div id="global-modal" class="hidden fixed inset-0 z-[100] bg-black bg-opacity-50 flex items-center justify-center p-4"></div>
+
+    <!-- Scripts do App carregados em ordem estrita -->
+    <script src="js/app.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/lib.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/screens.js"></script>
+    <script src="js/gestao.js"></script>
+    <script src="js/router.js"></script>
+</body>
+</html>
